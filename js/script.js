@@ -14,6 +14,12 @@ var fonts = ["Indie Flower", "Shadows Into Light", "Pacifico", "Dancing Script",
              "Lovers Quarrel", "Mrs Saint Delafield", "Mrs Sheppards",
              "Meie Script", "Princess Sofia", "Caveat", "Iceland"];
 var nobg_url = getApplicationPath() + "images/nobg.png";
+var fieldMap = {
+    '#cologne-team'   : { key : 'cologne15'   },
+    '#custom-team'    : { key : 'custom'      },
+    '#comedy-team'    : { key : 'comedy'      },
+    '#dreamhack-team' : { key : 'dreamhack15' }
+};
 
 /* font preloading */
 WebFont.load({
@@ -44,18 +50,6 @@ var $update_canvas_change = $("select.update-canvas");
 var $update_canvas_input = $("input.update-canvas");
 var $width = $("#width");
 
-// preload team selects based on stickertype array
-for (var i = 0; i < stickertype.length; i++) {
-    $teams[stickertype[i]] = $("#" + stickertype[i] + "-team");
-    if (i != stickerIndex) {
-        // hide all but current list
-        $teams[stickertype[i]].hide();
-    }
-}
-
-// hide clear background button
-$clearbg.hide();
-
 var $canvas = $("#canvas")[0];
 var w = $canvas.width = 228;
 var h = $canvas.height = 226;
@@ -63,9 +57,7 @@ var $context = $canvas.getContext('2d');
 
 /* image objects */
 var stickerImage = new Image();
-stickerImage.src = $teams[stickertype[stickerIndex]].val();
 var backgroundImage = new Image();
-backgroundImage.src = nobg_url;
 
 // If there is a filename in the path, remove it i.e. .../index.html
 function getApplicationPath() {
@@ -97,81 +89,143 @@ function updateCanvas() {
     $context.restore();
 }
 
-// handle general changes (sliders, text input)
-$update_canvas_input.on("input", updateCanvas);
-if (is_ie) {
-    $update_canvas_input.on("change", updateCanvas);
-}
-$update_canvas_change.on("change", updateCanvas);
+function initilize(data) {
+    // Load all of the team drop-downs.
+    $.each(fieldMap, function(fieldId, info){
+        populateBox(fieldId, data.types, info.key);
+    });
 
-// handle color based changes
-$color_pick.spectrum({
-    color: "#FFFFFF",
-    move: updateCanvas
-});
+    preLoadFields();
+    populateBox('#font', data.fonts);
+    populateCredits('#credits-header', data.credits.data);
 
-$random.on("click", function(e) {
-    $color_pick.spectrum("set", "#" + (Math.random()*0xFFFFFF<<0).toString(16));
-    updateCanvas();
-});
-
-// handle background based changes
-$bgbutton.on("click", function(e) {
-    $custom_background.val("");
-    $custom_background.click();
-});
-
-$custom_background.on("change", function(e) {
-    var file;
-    if ((file = this.files[0])) {
-        var img = new Image();
-        img.onload = function() {
-            if (this.width > 288 || this.height > 288){
-                $clearbg.click();
-                alert("File too big! Max size: 288x288");
-            } else {
-                backgroundImage.src = (window.URL || window.webkitURL).createObjectURL(file);
-                $clearbg.show();
-                $bgbutton.hide();
-            }
-            backgroundImage.onload = updateCanvas;
-        };
-        img.src = (window.URL || window.webkitURL).createObjectURL(file);
-    }
-});
-
-$clearbg.on("click", function(e) {
-    backgroundImage.src = nobg_url;
-    $custom_background.val("");
+    // hide clear background button
     $clearbg.hide();
-    $bgbutton.show();
-});
+}
 
-// handle sticker based changes
-$sticker_select.on("change", function(e) {
-    stickerImage.src = $teams[stickertype[stickerIndex]].val();
-    stickerImage.onload = updateCanvas;
-});
-
-$changetype.on("click", function(e) {
-    stickerIndex = (stickerIndex + 1) % stickertype.length;
-    $changetype.text("Change type (" + stickertype[stickerIndex] + ")");
-
-    for (var i = 0; i < stickertype.length; i++) {
-        if (i != stickerIndex) {
-            $teams[stickertype[i]].hide();
-        } else {
-            $teams[stickertype[i]].show();
-        }
+function addEventListeners() {
+    // handle general changes (sliders, text input)
+    $update_canvas_input.on("input", updateCanvas);
+    if (is_ie) {
+        $update_canvas_input.on("change", updateCanvas);
     }
+    $update_canvas_change.on("change", updateCanvas);
 
-    $sticker_select.change();
-});
+    // handle color based changes
+    $color_pick.spectrum({
+        color: "#FFFFFF",
+        move: updateCanvas
+    });
 
-$download.on("click", function(e) {
-    $download.attr("download", "DreamhackSignature.png");
-    $download.attr("href", $canvas.toDataURL().replace(/^data:image\/[^;]/, 'data:application/octet-stream'));
-});
+    $random.on("click", function(e) {
+        $color_pick.spectrum("set", randColor());
+        updateCanvas();
+    });
 
-/* initial call to draw canvas on page load */
-setTimeout(updateCanvas, 100);
+    // handle background based changes
+    $bgbutton.on("click", function(e) {
+        $custom_background.val("");
+        $custom_background.click();
+    });
+
+    $custom_background.on("change", function(e) {
+        var file;
+        if ((file = this.files[0])) {
+            var img = new Image();
+            img.onload = function() {
+                if (this.width > 288 || this.height > 288){
+                    $clearbg.click();
+                    alert("File too big! Max size: 288x288");
+                } else {
+                    backgroundImage.src = (window.URL || window.webkitURL).createObjectURL(file);
+                    $clearbg.show();
+                    $bgbutton.hide();
+                }
+                backgroundImage.onload = updateCanvas;
+            };
+            img.src = (window.URL || window.webkitURL).createObjectURL(file);
+        }
+    });
+
+    $clearbg.on("click", function(e) {
+        backgroundImage.src = nobg_url;
+        $custom_background.val("");
+        $clearbg.hide();
+        $bgbutton.show();
+    });
+
+    // handle sticker based changes
+    $sticker_select.on("change", function(e) {
+        stickerImage.src = $teams[stickertype[stickerIndex]].val();
+        stickerImage.onload = updateCanvas;
+    });
+
+    $changetype.on("click", function(e) {
+        stickerIndex = (stickerIndex + 1) % stickertype.length;
+        $changetype.text("Change type (" + stickertype[stickerIndex] + ")");
+
+        for (var i = 0; i < stickertype.length; i++) {
+            $teams[stickertype[i]].toggle(i === stickerIndex);
+        }
+
+        $sticker_select.change();
+    });
+
+    $download.on("click", function(e) {
+        $download.attr("download", "DreamhackSignature.png");
+        $download.attr("href", $canvas.toDataURL().replace(/^data:image\/[^;]/, 'data:application/octet-stream'));
+    });
+}
+
+function preLoadFields() {
+    // preload team selects based on stickertype array
+    for (var i = 0; i < stickertype.length; i++) {
+        $teams[stickertype[i]] = $("#" + stickertype[i] + "-team");
+        // hide all but current list
+        $teams[stickertype[i]].toggle(i === stickerIndex);
+    }
+    stickerImage.src = $teams[stickertype[stickerIndex]].val();
+    backgroundImage.src = nobg_url;
+}
+
+function randColor() {
+    return '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+}
+
+function populateBox(fieldId, types, type) {
+    var obj = types[type] || types;
+    $(fieldId).append(obj.data.map(function(record) {
+        var isObject = typeof record === 'object';
+        return $('<option>', {
+            text : isObject ? record.name : record,
+            value : isObject ? 'images/' + type + '/' + record.image : record
+        });
+    }));
+}
+
+function populateCredits(listId, data) {
+    $.each(data.reverse(), function(index, item) {
+        $(listId).after($('<li>').append($('<a>', {
+            target : '_blank',
+            href : item.href,
+            text : item.name
+        })).append($('<span>', {
+            text : ' > ' + item.description
+        })));
+    });
+}
+
+// Main
+(function() {
+    $.ajax({
+        dataType: "json",
+        url: getApplicationPath() + "data.json",
+        success: function(data, textStatus, jqXHR) {
+            initilize(data);
+            addEventListeners();
+
+            /* initial call to draw canvas on page load */
+            setTimeout(updateCanvas, 100);
+        }
+    });
+} ());

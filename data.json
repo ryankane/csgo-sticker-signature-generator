@@ -1,0 +1,301 @@
+{
+    "credits": {
+        "data": [{
+            "name": "Reddit",
+            "href": "https://redd.it/3pwe3k",
+            "description": "Unfathomable support"
+        }, {
+            "name": "Wibble199",
+            "href": "http://steamcommunity.com/id/wibble199/",
+            "description": "Adding rotatable text &amp; Photoshopped the new images to support transparent backgrounds."
+        }, {
+            "name": "MagicalZebra",
+            "href": "https://www.reddit.com/user/MagicalZebra",
+            "description": "Template for old images."
+        }, {
+            "name": "MIndye",
+            "href": "https://www.reddit.com/user/MIndye",
+            "description": "\"Blank\" Image"
+        }, {
+            "name": "CrueLy",
+            "href": "https://steamcommunity.com/profiles/76561198082596568",
+            "description": "Comedy Images"
+        }, {
+            "name": "clug",
+            "href": "http://steamcommunity.com/id/clug/",
+            "description": "HTML5 compliancy, optimisation of JS, general bug fixes"
+        }, {
+            "name": "R. Kane",
+            "href": "https://github.com/ryankane",
+            "description": "De-coupling data from markup."
+        }]
+    },
+    "fonts": {
+        "data": [
+            "Indie Flower",
+            "Shadows Into Light",
+            "Pacifico",
+            "Dancing Script",
+            "Shadows Into Light Two",
+            "Coming Soon",
+            "Handlee",
+            "Cookie",
+            "Tangerine",
+            "Great Vibes",
+            "Damion",
+            "Patrick Hand",
+            "Bad Script",
+            "Calligraffitti",
+            "Waiting for the Sunrise",
+            "Reenie Beanie",
+            "Nothing You Could Do",
+            "Sacramento",
+            "Crafty Girls",
+            "Allura",
+            "Kalam",
+            "Yellowtail",
+            "Italianno",
+            "Give You Glory",
+            "Dawning of a New Day",
+            "League Script",
+            "Ruthie",
+            "Lovers Quarrel",
+            "Mrs Saint Delafield",
+            "Mrs Sheppards",
+            "Meie Script",
+            "Princess Sofia",
+            "Caveat",
+            "Comic Sans MS"
+        ]
+    },
+    "types": {
+        "cologne15": {
+            "data": [{
+                "name": "Blank",
+                "image": "blank.png"
+            }, {
+                "name": "CLG",
+                "image": "clg.png"
+            }, {
+                "name": "Cloud9",
+                "image": "cloud9.png"
+            }, {
+                "name": "EnVyUs",
+                "image": "envyus.png"
+            }, {
+                "name": "Flipsid3",
+                "image": "flipsid3.png"
+            }, {
+                "name": "Fnatic",
+                "image": "fnatic.png"
+            }, {
+                "name": "G2",
+                "image": "kinguin.png"
+            }, {
+                "name": "iBuyPower",
+                "image": "ibuypower.png"
+            }, {
+                "name": "Immunity",
+                "image": "Immunity.png"
+            }, {
+                "name": "LGB eSports",
+                "image": "lgb-sports.png"
+            }, {
+                "name": "Luminosity Gaming",
+                "image": "luminosity-gaming.png"
+            }, {
+                "name": "Mousesports",
+                "image": "mousesports.png"
+            }, {
+                "name": "Na'Vi",
+                "image": "navi.png"
+            }, {
+                "name": "NiP",
+                "image": "nip.png"
+            }, {
+                "name": "Team eBettle",
+                "image": "e-bettle.png"
+            }, {
+                "name": "Team Renegades",
+                "image": "renegades.png"
+            }, {
+                "name": "Titan",
+                "image": "titan.png"
+            }, {
+                "name": "TSM",
+                "image": "solomid.png"
+            }, {
+                "name": "Virtus.Pro",
+                "image": "virtuspro.png"
+            }]
+        },
+        "custom": {
+            "data": [{
+                "name": "Teamyp",
+                "image": "teamyp.png"
+            }]
+        },
+        "comedy": {
+            "data": [{
+                "name": "Cheetos",
+                "image": "cheetos.png"
+            }, {
+                "name": "Chipotle",
+                "image": "chipotle.png"
+            }, {
+                "name": "Doritos",
+                "image": "doritos.png"
+            }, {
+                "name": "Illuminati",
+                "image": "illuminati.png"
+            }, {
+                "name": "KFC",
+                "image": "kfc.png"
+            }, {
+                "name": "McDonalds",
+                "image": "mcdonalds.png"
+            }, {
+                "name": "MLG",
+                "image": "mlg.png"
+            }, {
+                "name": "MTN Dew",
+                "image": "mtn-dew.png"
+            }, {
+                "name": "PornHub",
+                "image": "pornhub.png"
+            }, {
+                "name": "Subway",
+                "image": "subway.png"
+            }, {
+                "name": "Taco Bell",
+                "image": "tacobell.png"
+            }]
+        },
+        "dreamhack15": {
+            "data": [{
+                "name": "3DMax",
+                "image": "3dmax.png"
+            }, {
+                "name": "Astana Dragons",
+                "image": "astana-dragons.png"
+            }, {
+                "name": "Blank",
+                "image": "blank.png"
+            }, {
+                "name": "Bravado",
+                "image": "bravado.png"
+            }, {
+                "name": "Clan Mystik",
+                "image": "clan-mystik.png"
+            }, {
+                "name": "Cloud9",
+                "image": "cloud9.png"
+            }, {
+                "name": "Complexity",
+                "image": "complexity.png"
+            }, {
+                "name": "Copenhagen Wolves",
+                "image": "copenhagen-wolves.png"
+            }, {
+                "name": "Counter Logic Gaming",
+                "image": "counter-logic-gaming.png"
+            }, {
+                "name": "DAT Team",
+                "image": "dat-team.png"
+            }, {
+                "name": "Dignitas",
+                "image": "dignitas.png"
+            }, {
+                "name": "Dynamics",
+                "image": "dynamics.png"
+            }, {
+                "name": "E Bettle",
+                "image": "ebettle.png"
+            }, {
+                "name": "EnvyUs",
+                "image": "envyus.png"
+            }, {
+                "name": "Epsilon",
+                "image": "epsilon.png"
+            }, {
+                "name": "Flipsid3",
+                "image": "flipsid3.png"
+            }, {
+                "name": "Fnatic",
+                "image": "fnatic.png"
+            }, {
+                "name": "G2",
+                "image": "g2.png"
+            }, {
+                "name": "Hellraisers",
+                "image": "hellraisers.png"
+            }, {
+                "name": "iBuyPower",
+                "image": "ibuypower.png"
+            }, {
+                "name": "Keyd Stars",
+                "image": "keyd-stars.png"
+            }, {
+                "name": "Kinguin",
+                "image": "kinguin.png"
+            }, {
+                "name": "LDLC",
+                "image": "ldlc.png"
+            }, {
+                "name": "LG",
+                "image": "lg.png"
+            }, {
+                "name": "LGB eSports",
+                "image": "lgb.png"
+            }, {
+                "name": "London Conspiracy",
+                "image": "london-conspiracy.png"
+            }, {
+                "name": "Mousesports",
+                "image": "mousesports.png"
+            }, {
+                "name": "MyXMG",
+                "image": "myxmg.png"
+            }, {
+                "name": "Na'Vi",
+                "image": "navi.png"
+            }, {
+                "name": "NiP",
+                "image": "nip.png"
+            }, {
+                "name": "Penta",
+                "image": "penta.png"
+            }, {
+                "name": "Reason",
+                "image": "reason.png"
+            }, {
+                "name": "Renegades",
+                "image": "renegades.png"
+            }, {
+                "name": "Team Immunity",
+                "image": "immunity.png"
+            }, {
+                "name": "Team Liquid",
+                "image": "team-liquid.png"
+            }, {
+                "name": "Team Wolf",
+                "image": "team-wolf.png"
+            }, {
+                "name": "Titan",
+                "image": "titan.png"
+            }, {
+                "name": "TSM",
+                "image": "solomid.png"
+            }, {
+                "name": "Very Games",
+                "image": "very-games.png"
+            }, {
+                "name": "Vexed",
+                "image": "vexed.png"
+            }, {
+                "name": "Virtus.Pro",
+                "image": "virtuspro.png"
+            }]
+        }
+    }
+}
